@@ -20,11 +20,11 @@ class Photo < ApplicationRecord
   ## Direct associations
 
   # Photo#poster: returns a row from the users table associated to this photo by the owner_id column
-
+belongs_to(:poster, class_name: "User", foreign_key: "owner_id", required: true)
   # Photo#comments: returns rows from the comments table associated to this photo by the photo_id column
-
+has_many(:comments)
   # Photo#likes: returns rows from the likes table associated to this photo by the photo_id column
-
+has_many(:likes)
   ## Indirect associations
 
   # Photo#fans: returns rows from the users table associated to this photo through its likes
